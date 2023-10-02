@@ -1,0 +1,25 @@
+header {
+    background-color: blue;
+    font-size: x-large;
+    text-align: center;
+    font-weight: bold;
+    height: 60px;
+    font-style:italic;
+    color: white;
+    
+
+}
+
+.form-group {
+    font-size: xx-large;
+    /*text-align: center;
+    */
+}
+
+.form-group input {
+    font-size: x-large;
+   /* width: 700px; */
+}
+button {
+    font-size: x-large;
+}
