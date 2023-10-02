@@ -1,3 +1,5 @@
+
+
 header {
     background-color: rgb(22, 22, 230);
     font-size: xx-large;
@@ -16,21 +18,29 @@ header {
 
 .form-group input {
     font-size: x-large;
-   /* width: 700px; */
+   
 }
+
 button {
     font-size: x-large;
 }
 
 .results {
-    border: black thick 5px;
+    
     width: 50%;
-
+    
 }
-#day1 {
-    border: 10px;
+
+#day1, #day2, #day3, #day4, #day5 {
+    border: 3.5px solid blue;
+    width:fit-content;
+    display: inline-block;
 }
 
 .hide {
     display: none;
+}
+
+body {
+    background-color: grey;
 }
