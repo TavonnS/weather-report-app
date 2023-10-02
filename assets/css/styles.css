@@ -1,10 +1,10 @@
 header {
-    background-color: blue;
-    font-size: x-large;
+    background-color: rgb(22, 22, 230);
+    font-size: xx-large;
     text-align: center;
-    font-weight: bold;
+    font-weight: bolder;
     height: 60px;
-    font-style:italic;
+    font-style:oblique;
     color: white;
     
 
@@ -12,8 +12,6 @@ header {
 
 .form-group {
     font-size: xx-large;
-    /*text-align: center;
-    */
 }
 
 .form-group input {
@@ -22,4 +20,10 @@ header {
 }
 button {
     font-size: x-large;
+}
+
+.results {
+    border: black thick 5px;
+    width: 50%;
+
 }
