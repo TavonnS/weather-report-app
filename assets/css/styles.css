@@ -27,3 +27,10 @@ button {
     width: 50%;
 
 }
+#day1 {
+    border: 10px;
+}
+
+.hide {
+    display: none;
+}
