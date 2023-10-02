@@ -1,6 +1,3 @@
-
-// store previous searches as local storage
-
 var apiKey = "1c16efd32bbea70206dd01cfd77bb832";
 var locationURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + "&appid=" + apiKey;
 
@@ -21,7 +18,7 @@ searchBtn.addEventListener("click", fetchCity);
 
 
 function fetchCity() {
-
+// this function also stores searches
 // variables to power this function
 
 var searchInput = document.querySelector("#search").value;
@@ -41,6 +38,15 @@ var long = data[0].lon;
 // calls the next function
 
 weatherLook(lat, long);
+
+// local storage code:
+// storing searches:
+localStorage.setItem(city, JSON.stringify(city));
+
+// displaying searches:
+document.getElementById("search-history").textContent = JSON.stringify(localStorage)
+  
+   
 });
 };
 
@@ -83,7 +89,9 @@ var nlong = data.coord["lon"];
 // call the next function for five day forecast:
 fiveDayCall(nlat, nlong);  
 // allow the five day forecast button to appear:
+
 document.getElementById("futurecast").classList.remove("hide");
+
 
 
 // make border appear:
@@ -117,71 +125,73 @@ fiveBtn.addEventListener("click", function() {
     document.getElementById("future").classList.remove("hide");
 });
 
+
+
 // day one data:
-var dayOneDate = data.list[0].dt_txt;
+var dayOneDate = new Date(data.list[0].dt_txt);
 var dayOneTemp = data.list[0].main["temp"];
 var dayOneHumidity = data.list[0].main["humidity"];
 var dayOneWind = data.list[0].wind["speed"];
 var dayOneIconCode = data.list[0].weather[0].icon;
 var day1Icon = "http://openweathermap.org/img/w/" + dayOneIconCode + ".png";
 // displaying data:
-document.getElementById("oneDate").innerHTML = "Date/Time: " + dayOneDate;
+document.getElementById("oneDate").innerHTML = dayOneDate.toDateString();
 document.getElementById("one-icon").src = day1Icon;
 document.getElementById("oneTemp").innerHTML = "Temperature: " + dayOneTemp + " °F";
 document.getElementById("oneWind").innerHTML = "Wind: " + dayOneWind + " Miles per Hour";
 document.getElementById("oneHumd").innerHTML = "Humidity: " + dayOneHumidity + " %";
 
 // day two data:
-var dayTwoDate = data.list[8].dt_txt;
+var dayTwoDate = new Date(data.list[8].dt_txt);
 var dayTwoTemp = data.list[8].main["temp"];
 var dayTwoHumidity = data.list[8].main["humidity"];
 var dayTwoWind = data.list[8].wind["speed"];
 var dayTwoIconCode = data.list[8].weather[0].icon;
 var day2Icon = "http://openweathermap.org/img/w/" + dayTwoIconCode + ".png";
 // display data:
-document.getElementById("twoDate").innerHTML = "Date/Time: " + dayTwoDate;
+document.getElementById("twoDate").innerHTML = dayTwoDate.toDateString();
 document.getElementById("two-icon").src = day2Icon;
 document.getElementById("twoTemp").innerHTML = "Temperature: " + dayTwoTemp + " °F";
 document.getElementById("twoWind").innerHTML = "Wind: " + dayTwoWind + " Miles per Hour";
 document.getElementById("twoHumd").innerHTML = "Humidity: " + dayTwoHumidity + " %";
 
 // day three data:
-var dayThreeDate = data.list[16].dt_txt;
+var dayThreeDate = new Date(data.list[16].dt_txt);
 var dayThreeTemp = data.list[16].main["temp"];
 var dayThreeHumidity = data.list[16].main["humidity"];
 var dayThreeWind = data.list[16].wind["speed"];
 var dayThreeIconCode = data.list[16].weather[0].icon;
 var day3Icon = "http://openweathermap.org/img/w/" + dayThreeIconCode + ".png";
 // display:
-document.getElementById("threeDate").innerHTML = "Date/Time: " + dayThreeDate;
+document.getElementById("threeDate").innerHTML = dayThreeDate.toDateString();
 document.getElementById("three-icon").src = day3Icon;
 document.getElementById("threeTemp").innerHTML = "Temperature: " + dayThreeTemp + " °F"; 
 document.getElementById("threeWind").innerHTML = "Wind: " + dayThreeWind + " Miles per Hour";
 document.getElementById("threeHumd").innerHTML = "Humidity: " + dayThreeHumidity + " %";
 
 // day four data:
-var dayFourDate = data.list[24].dt_txt;
+var dayFourDate = new Date(data.list[24].dt_txt);
 var dayFourTemp = data.list[24].main["temp"];
 var dayFourHumidity = data.list[24].main["humidity"];
 var dayFourWind = data.list[24].wind["speed"];
 var dayFourIconCode = data.list[24].weather[0].icon;
 var day4Icon = "http://openweathermap.org/img/w/" + dayFourIconCode + ".png";
 // display:
-document.getElementById("fourDate").innerHTML = "Date/Time: " + dayFourDate;
+document.getElementById("fourDate").innerHTML = dayFourDate.toDateString();
 document.getElementById("four-icon").src = day4Icon;
 document.getElementById("fourTemp").innerHTML = "Temperature: " + dayFourTemp + " °F";
 document.getElementById("fourWind").innerHTML = "Wind: " + dayFourWind + " Miles per Hour";
 document.getElementById("fourHumd").innerHTML = "Humidity: " + dayFourHumidity + " %";
 
 // day five data:
-var dayFiveDate = data.list[32].dt_txt;
+var dayFiveDate = new Date(data.list[32].dt_txt);
 var dayFiveTemp = data.list[32].main["temp"];
 var dayFiveHumidity = data.list[32].main["humidity"];
 var dayFiveWind = data.list[32].wind["speed"];
 var dayFiveIconCode = data.list[32].weather[0].icon;
 var day5Icon = "http://openweathermap.org/img/w/" + dayFiveIconCode + ".png";
 // display:
-document.getElementById("fiveDate").innerHTML = "Date/Time: " + dayFiveDate;
+document.getElementById("fiveDate").innerHTML = dayFiveDate.toDateString();
 document.getElementById("five-icon").src = day5Icon;
 document.getElementById("fiveTemp").innerHTML = "Temperature: " + dayFiveTemp + " °F";
 document.getElementById("fiveWind").innerHTML = "Wind: " + dayFiveWind + " Miles per Hour";
@@ -190,3 +200,4 @@ document.getElementById("fiveHumd").innerHTML = "Humidity: " + dayFiveHumidity +
 });
 };
 
+ 
