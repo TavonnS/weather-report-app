@@ -19,7 +19,8 @@ searchBtn.addEventListener("click", fetchCity);
 
 function fetchCity() {
 // this function also stores searches
-// variables to power this function
+
+// variables to power this function:
 
 var searchInput = document.querySelector("#search").value;
 var city = searchInput;
@@ -35,19 +36,60 @@ fetch (cityURL)
 var lat = data[0].lat;
 var long = data[0].lon;
 
-// calls the next function
 
+// calls the next function
 weatherLook(lat, long);
 
 // local storage code:
-// storing searches:
+var searchHistory = [];
 localStorage.setItem(city, JSON.stringify(city));
 
-// displaying searches:
-document.getElementById("search-history").textContent = JSON.stringify(localStorage)
-  
+var storedCity = localStorage.getItem(city);
+  if (storedCity) {
+      searchHistory = JSON.parse(storedCity);
+ };
+addCity();
+
+// search from history:
+
+/* the attempt to write reloading previous search function:
+
+function restart() {
+
    
+var city = searched.textContent;
+
+var cityURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;   
+
+fetch (cityURL)
+.then (function (response) {
+    return response.json();
+})
+.then(function (data) {
+    console.log(data);
+
+var lat = data[0].lat;
+var long = data[0].lon;
+
+weatherLook(lat, long);
+
 });
+};
+// end of reloading function attempt
+
+*/
+
+// make history dynamic, make them trigger the search again:
+function addCity () {   
+   var searched = document.createElement("p");
+   searched.textContent = searchHistory;
+   document.getElementById("search-history").appendChild(searched);
+   var p = document.getElementsByTagName("p")
+   
+};
+
+});
+
 };
 
 
@@ -88,11 +130,9 @@ var nlong = data.coord["lon"];
 
 // call the next function for five day forecast:
 fiveDayCall(nlat, nlong);  
+
 // allow the five day forecast button to appear:
-
 document.getElementById("futurecast").classList.remove("hide");
-
-
 
 // make border appear:
 var resultsBox = document.getElementById("resultsBox");
