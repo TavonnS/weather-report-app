@@ -5,4 +5,4 @@ This app provides a quick weather report.  This project was the first coding an 
 
 ## Screenshot and Link
 ![Screenshot](/assets/weatherappscreen.png)
-![Link to App](https://tavonns.github.io/weather-report-app/)
+[Link to App](https://tavonns.github.io/weather-report-app/)
