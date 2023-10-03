@@ -24,7 +24,7 @@ function fetchCity() {
 
 var searchInput = document.querySelector("#search").value;
 var city = searchInput;
-var cityURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;   
+var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;   
 
 fetch (cityURL)
 .then (function (response) {
